@@ -40,7 +40,12 @@ namespace NetCoreSeguridadPersonalizada.Controllers
                 ViewBag.Mensaje = "Credenciales incorrectas";
                 return View();
             }
-                return View();
+        }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
     }
 }
